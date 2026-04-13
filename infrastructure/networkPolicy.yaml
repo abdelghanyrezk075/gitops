@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: backend-default-deny
+  namespace: default
 spec:
   podSelector:
     matchLabels:
@@ -13,6 +14,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: backend-allow-frontend
+  namespace: default
 spec:
   podSelector:
     matchLabels:

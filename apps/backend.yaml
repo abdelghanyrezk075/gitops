@@ -27,6 +27,13 @@ spec:
           image: imageregistry11-h7hdbtbtb6ddh2b8.azurecr.io/app:backend
           ports:
             - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+          limits:
+              cpu: "200m"
+              memory: "256Mi"
           env:
             - name: DB_HOST
               value: postgres-svc

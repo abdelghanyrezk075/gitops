@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-default-deny
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  policyTypes:
+  - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-allow-frontend
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+
+  policyTypes:
+  - Ingress
+
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
